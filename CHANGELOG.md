@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.1] — Hotkeys expuestos a Lua + PKGBUILD
+
+### Añadido
+- Evento `on_key(code, nombre)` en plugins: cada pulsación de tecla llega a
+  los plugins con el código raylib y un nombre legible (`F2`, `a`, `ESC`,
+  `UP`, ...). Ver docs/PLUGINS.md.
+- Plugin `keys.lua` de ejemplo (muestra la tecla pulsada en el panel).
+- `launcher.lua` ahora abre ventanas realmente con F2 vía `on_key`.
+- `PKGBUILD` para instalar como paquete pacman en Arch
+  (`makepkg -si`, requiere el tag v0.2.1).
+- Soporte de `GetKeyPressed()` en el stub de tests.
+
 ## [0.2.0] — Panel configurable estilo lxpanel
 
 ### Añadido

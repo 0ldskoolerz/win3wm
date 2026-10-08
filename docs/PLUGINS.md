@@ -81,6 +81,25 @@ existen (todas opcionales):
 | `on_stop()` | `()` | al cerrar win3wm |
 | `on_window_focused(id, titulo)` | `(int, string)` | al enfocar una ventana |
 | `on_window_closed(id)` | `(int)` | al cerrar una ventana |
+| `on_key(code, nombre)` | `(int, string)` | al pulsar cualquier tecla |
+
+### `on_key` — hotkeys desde Lua
+
+Cada pulsación de tecla llega a todos los plugins con dos argumentos:
+el código raylib (`code`) y un nombre legible (`nombre`). Nombres que envía
+el core: `F1`..`F12`, caracteres imprimibles (`a`, `1`, ` `, ...),
+`ESC`, `ENTER`, `TAB`, `BACKSPACE`, `UP`, `DOWN`, `LEFT`, `RIGHT`,
+`LALT`, `RALT`, `LCTRL`.
+
+```lua
+function on_key(code, name)
+    if name == "F2" then wm.create_window("Nueva", 220, 120) end
+    if name == "q"  then wm.notify("pulsaste q") end
+end
+```
+
+⚠️ Las combinaciones con modificadores (Alt+Tab, F1, Esc) también llegan a
+`on_key`; el core las procesa además con su comportamiento propio.
 
 ⚠️ `on_tick` corre a 60 Hz: si lees archivos (`/proc`, etc.) o haces
 trabajo pesado, **cachea con un timer** como hace `mem.lua` (cada 5 s).
@@ -117,6 +136,7 @@ Con `panel_modules = tasks,clock,uptime` verías: `[ventanas] [up 123s] [HH:MM]`
 
 | Plugin | Qué demuestra |
 |---|---|
+| `keys.lua` | evento `on_key`: muestra la última tecla pulsada en el panel |
 | `clock.lua` | `wm.status` para hora y fecha (con cacheo por segundo) |
 | `mem.lua` | leer `/proc/meminfo`, formatear, actualizar cada 5 s |
 | `apps.lua` | `wm.window_ids()` + `wm.window_title()` para listar apps |

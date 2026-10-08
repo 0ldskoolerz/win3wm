@@ -43,6 +43,7 @@ bool IsMouseButtonReleased(int button);
 Vector2 GetMousePosition(void);
 Vector2 GetMouseDelta(void);
 bool IsKeyPressed(int key);
+int GetKeyPressed(void);
 bool IsKeyDown(int key);
 bool IsWindowResized(void);
 int GetScreenWidth(void);

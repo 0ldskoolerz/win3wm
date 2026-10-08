@@ -1,14 +1,8 @@
--- launcher.lua — abre una ventana nueva cada vez que se pulsa F2
--- (el hotkey lo registra el core; aquí solo creamos ventanas de ejemplo)
+-- launcher.lua — abre una ventana nueva con F2 (demostración de on_key)
 local n = 0
 
 function on_start()
-    wm.log("launcher listo")
-end
-
-function on_tick()
-    -- demostración: crea una ventana con F2 detectado vía título cambiante
-    -- el core no expone hotkeys aún; este plugin crea ventanas programáticas
+    wm.log("launcher listo: pulsa F2 para abrir una ventana")
 end
 
 function open_demo()
@@ -17,4 +11,8 @@ function open_demo()
     if id >= 0 then
         wm.notify("ventana #" .. id .. " creada desde Lua")
     end
+end
+
+function on_key(code, name)
+    if name == "F2" then open_demo() end
 end

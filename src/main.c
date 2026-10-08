@@ -221,6 +221,33 @@ static void cascade_all(void) {
 }
 
 /* ---------- input ---------- */
+static const char *key_name(int key) {
+    static char buf[8];
+    if (key >= 290 && key <= 301) {   /* F1..F12 */
+        snprintf(buf, sizeof buf, "F%d", key - 289);
+        return buf;
+    }
+    if (key >= 32 && key <= 126) {     /* printable ASCII */
+        buf[0] = (char)key;
+        buf[1] = '\0';
+        return buf;
+    }
+    switch (key) {
+    case 256: return "ESC";
+    case 257: return "ENTER";
+    case 258: return "TAB";
+    case 259: return "BACKSPACE";
+    case 262: return "RIGHT";
+    case 263: return "LEFT";
+    case 264: return "DOWN";
+    case 265: return "UP";
+    case 342: return "LALT";
+    case 344: return "RALT";
+    case 341: return "LCTRL";
+    }
+    return "?";
+}
+
 static void handle_input(void) {
     Vector2 m = GetMousePosition();
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
@@ -297,6 +324,11 @@ static void handle_input(void) {
         if (IsKeyPressed(KEY_DOWN)) g_menu_sel = (g_menu_sel + 1) % 3;
         if (IsKeyPressed(KEY_UP)) g_menu_sel = (g_menu_sel + 2) % 3;
     }
+
+    /* drain the key queue and forward every press to plugins (on_key) */
+    int key;
+    while ((key = GetKeyPressed()) != 0)
+        plugins_call(&g_plugins, "on_key", "ds", key, key_name(key));
 }
 
 /* ---------- main ---------- */
