@@ -8,7 +8,7 @@ url="https://github.com/0ldskoolerz/win3wm"
 license=('MIT')
 depends=('raylib' 'lua')
 makedepends=('git')
-source=("$pkgname::git+$url.git#tag=v$pkgver")  # requiere tag v0.2.1 en el repo
+source=("$pkgname::git+$url.git#tag=v$pkgver")
 md5sums=('SKIP')
 
 build() {

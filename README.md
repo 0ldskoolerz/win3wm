@@ -91,6 +91,17 @@ tests/
 - [raylib](https://www.raylib.com/) >= 4.0
 - Lua 5.3/5.4 (opcional: sin Lua compila y avisa)
 
+## El ecosistema W3M
+
+win3wm es el **simulador/prototipo** (raylib). La familia completa:
+
+| Proyecto | Qué es |
+|---|---|
+| [W3M](https://github.com/0ldskoolerz/W3M) | WM de X11 real (producción) — el mismo core lógico |
+| [w3m-apps](https://github.com/0ldskoolerz/w3m-apps) | Apps Win 3.x: explorador, terminal, tareas, calc, notepad |
+| [w3m-net](https://github.com/0ldskoolerz/w3m-net) | Suite de red estilo Trinux (11 apps) |
+| [w3m-linux](https://github.com/0ldskoolerz/w3m-linux) | La distro completa: Buildroot + BusyBox + todo lo anterior |
+
 ## Licencia
 
 MIT (o la que prefieras al publicarlo).
