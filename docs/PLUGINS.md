@@ -142,6 +142,25 @@ Con `panel_modules = tasks,clock,uptime` verías: `[ventanas] [up 123s] [HH:MM]`
 | `apps.lua` | `wm.window_ids()` + `wm.window_title()` para listar apps |
 | `greeter.lua` | eventos `on_start`, `on_window_focused`, `on_window_closed` |
 | `launcher.lua` | `wm.create_window` desde Lua ( función `open_demo()` lista para conectar) |
+| `audio.lua` | volumen/mute reales vía `pactl` (PulseAudio/PipeWire); F8 mute, F9/F10 volumen |
+| `red.lua` | conexión de red vía `nmcli`; F11 lista redes wifi |
+| `bluetooth.lua` | estado Bluetooth vía `bluetoothctl`; F7 escanea dispositivos |
+| `discos.lua` | uso de discos vía `df`/`lsblk`; F5 lista montables, F6 desmonta /media y /mnt |
+
+### Hotkeys de los addons (requieren las herramientas del sistema)
+
+| Tecla | Acción | Requiere |
+|---|---|---|
+| F5 | listar discos/particiones montables | `lsblk` (util-linux) |
+| F6 | desmontar lo montado bajo /media y /mnt | `umount`/`udisks2` |
+| F7 | escanear dispositivos Bluetooth | `bluez-utils` |
+| F8 | silenciar/activar audio | `pactl` (pipewire-pulse/pulseaudio) |
+| F9 / F10 | volumen −5% / +5% | `pactl` |
+| F11 | listar redes wifi | `networkmanager` |
+
+Estos addons ejecutan comandos del sistema con los permisos de tu usuario;
+en un equipo de escritorio normal funcionan sin más. Lee el código de cada
+plugin antes de activarlo (son ~60 líneas cada uno).
 
 ---
 

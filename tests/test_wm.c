@@ -87,8 +87,8 @@ int main(void) {
     CHECK(cfg_load(&cfg, "config/win3wm.conf"));
     CHECK(cfg.screen_w == 1024 && cfg.screen_h == 768);
     CHECK(cfg.show_taskbar);
-    CHECK(!strcmp(cfg.plugins, "clock,greeter,mem,apps"));
-    CHECK(!strcmp(cfg.panel_modules, "tasks,clock,date,mem,apps"));
+    CHECK(!strcmp(cfg.plugins, "clock,greeter,mem,apps,audio,red,bluetooth,discos"));
+    CHECK(!strcmp(cfg.panel_modules, "tasks,audio,red,bt,discos,mem,apps,clock,date"));
     CHECK(cfg_get(&cfg, "wallpaper") != NULL && !strcmp(cfg_get(&cfg, "wallpaper"), "teal"));
     CHECK(cfg_get(&cfg, "no_existe") == NULL);
 

@@ -1,6 +1,6 @@
 # Maintainer: 0ldskoolerz <0ldskoolerz@users.noreply.github.com>
 pkgname=win3wm
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Gestor de ventanas minimalista estilo Openbox/Blackbox con estetica Windows 3.x (C + raylib + plugins Lua)"
 arch=('x86_64' 'i686' 'aarch64')

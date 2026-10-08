@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.0] — Addons de sistema: audio, red, bluetooth, discos
+
+### Añadido
+- `audio.lua`: volumen y mute reales vía `pactl`; F8/F9/F10.
+- `red.lua`: conexión ethernet/wifi vía `nmcli`; F11 lista redes.
+- `bluetooth.lua`: estado y escaneo vía `bluetoothctl`; F7.
+- `discos.lua`: uso de discos vía `df`/`lsblk`; F5 lista montables,
+  F6 desmonta lo montado bajo /media y /mnt.
+- Documentación de los hotkeys y dependencias en docs/PLUGINS.md.
+
 ## [0.2.1] — Hotkeys expuestos a Lua + PKGBUILD
 
 ### Añadido
